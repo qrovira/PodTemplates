@@ -1,28 +1,3 @@
-package Mojolicious::Plugin::PodTemplates;
-
-use Mojo::Base 'Mojolicious::Plugin';
-
-use Mojolicious::Plugin::PodTemplates::Renderer;
-
-our $VERSION = '0.01';
-
-sub register {
-  my ($self, $app, $opts) = @_;
-
-  $app->renderer(
-      #ugh
-      Mojolicious::Plugin::PodTemplates::Renderer->new(
-          #jesus fucking christ..
-          %{ $app->renderer }
-      )
-  );
-
-  push @{ $app->renderer->classes }, @{ $opts->{classes} } if $opts->{classes};
-}
-
-1;
-__END__
-
 =encoding utf8
 
 =head1 NAME
@@ -130,4 +105,6 @@ Register plugin in L<Mojolicious> application.
 
 L<Mojolicious>, L<Mojolicious::Guides>, L<http://mojolicio.us>.
 
+
 =cut
+

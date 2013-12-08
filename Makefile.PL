@@ -3,6 +3,8 @@ use warnings;
 
 use ExtUtils::MakeMaker;
 
+my $preop = 'perldoc -uT $(VERSION_FROM) | tee $(DISTVNAME)/README.pod > README.pod';
+
 WriteMakefile(
   NAME         => 'Mojolicious::Plugin::PodTemplates',
   VERSION_FROM => 'lib/Mojolicious/Plugin/PodTemplates.pm',
@@ -11,5 +13,10 @@ WriteMakefile(
       'Mojolicious' => '4.58',
       'Pod::Tree'   => '1.17',
   },
-  test         => {TESTS => 't/*.t'}
+  test         => {TESTS => 't/*.t'},
+  dist         => {
+      COMPRESS   => 'gzip -9f',
+      SUFFIX     => 'gz',
+      PREOP      => $preop,
+  },
 );
