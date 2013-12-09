@@ -22,7 +22,7 @@ sub _all_pod {
 
     foreach my $node ( @{ $tree->get_root->get_children } ) {
         if( $node->is_c_head1 ) {
-            $in_template_section = $node->{text} =~ m#templates#i;
+            $in_template_section = $node->{text} =~ m#template#i;
             next;
         }
         if( $in_template_section && $node->is_c_head2 ) {
@@ -39,7 +39,7 @@ sub _all_pod {
                 $data =~ s#[\n\r]{1,2}$##;
                 $data =~ s#^  ##mg;
                 $all->{$name} = ($all->{$name} // ""). $data;
-            } else {
+            } elsif( ! $node->is_ordinary ) {
                 undef $name;
             }
         }
