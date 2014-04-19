@@ -9,13 +9,8 @@ our $VERSION = '0.01';
 sub register {
   my ($self, $app, $opts) = @_;
 
-  $app->renderer(
-      #ugh
-      Mojolicious::Plugin::PodTemplates::Renderer->new(
-          #jesus fucking christ..
-          %{ $app->renderer }
-      )
-  );
+  #jesus fucking christ..
+  bless $app->renderer, "Mojolicious::Plugin::PodTemplates::Renderer";
 
   push @{ $app->renderer->classes }, @{ $opts->{classes} } if $opts->{classes};
 }
