@@ -17,14 +17,13 @@ sub _all_pod {
     my $snips;
 
     # Check if the file has been opened due to __DATA__ first
+    local $/="\n";
     my $handle = do { no strict 'refs'; \*{"${class}::DATA"} };
     if( fileno $handle ) {
         seek $handle, 0, 0;
         $snips = Pod::Snippets->load( $handle, -markup => "template" );
     }
     else {
-        local $/="\n";
-
         my $class_file = $class.".pm";
         $class_file =~ s#::#/#g;
         if( exists $INC{$class_file} ) {
