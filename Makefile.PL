@@ -10,8 +10,8 @@ WriteMakefile(
   VERSION_FROM => 'lib/Mojolicious/Plugin/PodTemplates.pm',
   AUTHOR       => 'A Good Programmer <nospam@cpan.org>',
   PREREQ_PM    => {
-      'Mojolicious' => '4.58',
-      'Pod::Tree'   => '1.17',
+      'Mojolicious'   => '4.58',
+      'Pod::Snippets' => '0.14',
   },
   test         => {TESTS => 't/*.t'},
   dist         => {

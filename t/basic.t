@@ -25,21 +25,38 @@ done_testing();
 
 =head2 hello.html.ep
 
+=for template "hello.html.ep" begin
+
   <b>Hello, Mojo!</b>
+
+=for template "hello.html.ep" end
 
 =head2 Template with name - named.html.ep
 
+=for template "named.html.ep" begin
+
   <b>Hi, Mojo!</b>
 
+=for template "named.html.ep" end
+
 =head2 howdy.html.ep
+
+=for template "howdy.html.ep" begin
 
   %layout 'layout';
   <b>Howdy, <%= $visitor %>!</b>
 
+=for template "howdy.html.ep" end
+
 =head2 layouts/layout.html.ep
+
+=for template "layouts/layout.html.ep" begin
 
   <h2>From layout:</h2>
   <%= content %>
 
+=for template "layouts/layout.html.ep" end
+
 =cut
+
 __DATA__
