@@ -44,8 +44,8 @@ the current Renderer to allow loading templates from POD sections, in a similar
 way it's done for the DATA sections.
 
 While this is rather retarded, the idea of making them part of the documentation
-can come handy, for example, if you provide default templates meant for overriding
-on a plugin or base controller class.
+can come handy, for example, when you provide templates on a plugin or base
+controller that are meant to serve both as an example and documentation.
 
 =head1 POD HANDLING
 
