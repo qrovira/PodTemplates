@@ -1,6 +1,8 @@
 package Mojolicious::Plugin::PodTemplates::Loader;
 
 use Mojo::Base 'Mojo::Loader';
+
+use Mojo::Util qw/ class_to_path /;
 use Pod::Snippets;
 
 my (%BIN, %CACHE);
@@ -24,7 +26,7 @@ sub _all_pod {
         $snips = Pod::Snippets->load( $handle, -markup => "template" );
     }
     else {
-        my $class_file = $class.".pm";
+        my $class_file = class_to_path $class;
         $class_file =~ s#::#/#g;
         if( exists $INC{$class_file} ) {
             $snips = Pod::Snippets->load( $INC{$class_file}, -markup => "template" );
